@@ -1,0 +1,315 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define la fuente principal del sitio. */
+    color: #333; /* Establece el color del texto en un gris oscuro. */
+    margin: 0; /* Elimina el margen por defecto del body. */
+    display: flex; /* Utiliza el sistema de caja flexible para la disposición del contenido. */
+    flex-direction: column; /* Coloca los elementos en una columna. */
+    align-items: center; /* Centra horizontalmente los elementos dentro del body. */
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana. */
+    padding: 0; /* Elimina el padding por defecto del body. */
+    background: #000; /* Establece el fondo negro para toda la página. */
+    overflow: auto; /* Permite que el contenido desborde si es necesario, activando scroll. */
+    position: relative; /* Define una posición relativa para el body, útil para otros elementos hijos. */
+}
+.navbar {
+    width: 100%; /* La barra de navegación ocupa el 100% del ancho de la página. */
+    background-color: #1a1a1a; /* Fija un fondo gris oscuro para la barra de navegación. */
+    position: sticky; /* Permite que la barra de navegación se quede fija en la parte superior al hacer scroll. */
+    top: 0; /* Fija la barra al tope de la ventana. */
+    z-index: 1000; /* Asegura que la barra se superponga a otros elementos con z-index menor. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Añade una sombra debajo de la barra de navegación. */
+}
+
+.navbar ul {
+    list-style: none; /* Elimina los puntos de la lista. */
+    display: flex; /* Hace que los elementos de la lista se dispongan horizontalmente. */
+    justify-content: center; /* Centra los elementos de la lista en la barra de navegación. */
+    padding: 15px; /* Añade padding alrededor de los elementos de la lista. */
+    margin: 0; /* Elimina el margen por defecto de la lista. */
+}
+
+.navbar ul li {
+    margin: 0 20px; /* Añade un margen horizontal entre los elementos de la lista. */
+}
+
+.navbar ul li a {
+    color: #fff; /* El texto de los enlaces es blanco. */
+    text-decoration: none; /* Elimina el subrayado de los enlaces. */
+    font-weight: bold; /* Establece un estilo de fuente en negrita. */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas. */
+    letter-spacing: 1px; /* Añade un espaciado entre las letras. */
+    position: relative; /* Permite posicionar elementos internos como `::before`. */
+    padding: 5px 0; /* Añade un poco de espacio vertical dentro del enlace. */
+    font-size: 1.1em; /* Define un tamaño de fuente ligeramente más grande. */
+    transition: color 0.3s ease, transform 0.3s ease; /* Añade una transición suave para color y transformación al hacer hover. */
+}
+
+.navbar ul li a::before {
+    content: ''; /* Inserta un contenido vacío (línea decorativa) antes del enlace. */
+    position: absolute; /* Posiciona la línea decorativa de manera absoluta dentro del enlace. */
+    bottom: -5px; /* Coloca la línea justo debajo del enlace. */
+    left: 50%; /* Inicia la línea en el centro del enlace. */
+    width: 0; /* Por defecto, la línea tiene 0 de ancho (invisible). */
+    height: 2px; /* Define una altura de 2px para la línea. */
+    background: #a2db1e; /* La línea es de color verde claro. */
+    transition: width 0.3s ease, left 0.3s ease; /* Transición suave para el ancho y la posición al hacer hover. */
+}
+
+.navbar ul li a:hover::before {
+    width: 100%; /* Expande la línea a todo el ancho del enlace cuando el usuario pasa el mouse sobre él. */
+    left: 0; /* Mueve la línea al borde izquierdo del enlace. */
+}
+
+.navbar ul li a:hover {
+    color: #a2db1e; /* Cambia el color del texto del enlace al verde claro cuando el usuario lo pasa el mouse sobre él. */
+    transform: scale(1.1); /* Agranda el enlace ligeramente. */
+}
+.brand-header {
+    text-align: center; /* Centra el texto dentro del header. */
+    margin: 40px 0; /* Añade un margen vertical para separar el header del contenido. */
+    position: relative; /* Posiciona el header de forma relativa para superponer animaciones. */
+    z-index: 1; /* Asegura que el header esté por encima de algunos elementos, pero debajo de otros con mayor z-index. */
+    animation: fadeIn 2s ease-in-out forwards; /* Aplica una animación para que el header aparezca suavemente. */
+}
+
+.brand-header h1 {
+    font-size: 5em; /* Establece un tamaño de fuente grande para el título. */
+    color: #ffffff; /* El color del texto es blanco. */
+    margin: 0; /* Elimina márgenes alrededor del título. */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.7); /* Aplica sombras de colores al texto. */
+    animation: moveTextGlow 4s infinite alternate ease-in-out, pulseGlow 3s infinite; /* Aplica dos animaciones de manera continua al texto. */
+}
+
+.brand-header p {
+    font-size: 1.5em; /* Tamaño de fuente grande para el párrafo de descripción. */
+    color: #ffffff; /* El texto es blanco. */
+    margin-top: 10px; /* Añade margen en la parte superior del párrafo. */
+    text-shadow: 0 0 10px rgba(0, 0, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.7); /* Aplica un resplandor al texto del párrafo. */
+    animation: floatingText 3s ease-in-out infinite; /* Aplica una animación que hace flotar el texto continuamente. */
+}
+@keyframes pulseGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Define el resplandor inicial y final para el texto. */
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 0, 255, 1); /* Aumenta el resplandor en el punto medio de la animación. */
+    }
+}
+
+@keyframes moveTextGlow {
+    0% { transform: translateX(0); } /* El texto comienza en su posición original. */
+    100% { transform: translateX(20px); } /* El texto se mueve 20px hacia la derecha al final de la animación. */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* El elemento es completamente transparente al principio. */
+        transform: translateY(-50px); /* El elemento empieza 50px arriba de su posición final. */
+    }
+    100% {
+        opacity: 1; /* El elemento se vuelve completamente opaco. */
+        transform: translateY(0); /* El elemento termina en su posición original. */
+    }
+}
+
+@keyframes floatingText {
+    0%, 100% { transform: translateY(0); } /* El texto empieza y termina en su posición original. */
+    50% { transform: translateY(-10px); } /* En el punto medio de la animación, el texto sube 10px. */
+}
+/* Particles */
+/* El contenedor donde se muestra la animación de partículas */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca las partículas detrás del contenido principal */
+    pointer-events: none; /* Evita que las partículas interfieran con los eventos del usuario */
+}
+
+/* Pricing Section */
+/* Sección principal de los precios */
+.pricing {
+    text-align: center; /* Centra el contenido de la sección */
+    margin-bottom: 40px; /* Añade margen inferior */
+    position: relative; /* Establece la posición relativa para superposiciones */
+    z-index: 1; /* Asegura que el contenido esté sobre las partículas */
+}
+
+/* Texto con efecto de brillo para el título */
+h2.glow-text {
+    font-size: 3em; /* Tamaño del texto */
+    color: #fff; /* Color blanco */
+    position: relative; /* Posición relativa para aplicar el efecto de resplandor */
+    display: inline-block; /* Permite aplicar efectos al contenedor del texto */
+    padding: 10px; /* Espaciado alrededor del texto */
+    margin: 0; /* Elimina márgenes */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Sombra de texto con efecto de brillo */
+    animation: glow 3s ease-in-out infinite, moveText 5s ease-in-out infinite; /* Animación de resplandor y movimiento */
+}
+
+/* Filtro de fondo para el efecto de resplandor detrás del texto */
+h2.glow-text::before {
+    content: '';
+    position: absolute; /* Se coloca justo detrás del texto */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff0080, #ff8c00); /* Gradiente de colores para el resplandor */
+    filter: blur(10px); /* Desenfoque para un resplandor difuso */
+    z-index: -1; /* Asegura que el resplandor esté detrás del texto */
+    opacity: 0.6; /* Ajusta la opacidad del resplandor */
+}
+
+/* Animación de resplandor continuo */
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 0, 255, 1);
+    }
+}
+
+/* Animación de movimiento del texto */
+@keyframes moveText {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); }
+    100% { transform: translateX(0); }
+}
+
+/* Plan Cards */
+/* Contenedor que organiza las tarjetas de precios */
+.pricing-container {
+    display: flex; /* Organiza las tarjetas en un diseño flexible */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas si es necesario */
+}
+
+/* Estilo de las tarjetas de los planes */
+.plan {
+    background: #eee8e8; /* Fondo claro */
+    border-radius: 10px; /* Esquinas redondeadas */
+    overflow: hidden; /* Oculta cualquier contenido que se salga de los bordes */
+    margin: 10px; /* Espaciado alrededor de cada tarjeta */
+    width: 300px; /* Ancho fijo para cada tarjeta */
+    height: 350px; /* Altura fija */
+    position: relative; /* Para manejar la superposición de contenido */
+    transition: transform 0.5s ease; /* Efecto de transición para la animación de hover */
+    box-shadow: 0 4px 10px rgba(248, 245, 245, 0.89); /* Sombra sutil alrededor de la tarjeta */
+}
+
+/* Efecto de aumento al pasar el cursor sobre una tarjeta */
+.plan:hover {
+    transform: scale(1.08); /* Aumenta el tamaño ligeramente */
+}
+
+/* Estilo para la parte frontal de la tarjeta */
+.plan .front, .plan .back {
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto dentro de la tarjeta */
+    height: 100%; /* Asegura que el contenido llene la tarjeta completamente */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total de la tarjeta */
+    position: absolute; /* Superpone el frente y la parte trasera */
+    width: 100%; /* Ancho completo de la tarjeta */
+    transition: opacity 0.5s ease; /* Transición suave para cambiar la opacidad */
+}
+
+/* Estilo para el frente de la tarjeta */
+.plan .front {
+    background: #f5f5f5; /* Fondo claro */
+    z-index: 3; /* Hace que el frente esté por encima del reverso */
+}
+
+/* Estilo para la parte trasera de la tarjeta */
+.plan .back {
+    display: flex;
+    flex-direction: column; /* Alinea el contenido de arriba hacia abajo */
+    justify-content: flex-end; /* Alinea el contenido al final (abajo) */
+    align-items: center; /* Centra horizontalmente */
+    padding: 20px;
+    height: 100%; /* Asegura que ocupe toda la altura */
+}
+
+/* Botón en la parte trasera de la tarjeta */
+.plan .back .btn {
+    margin-top: 10px; /* Espaciado entre el contenido y el botón */
+}
+
+/* Oculta el frente de la tarjeta al hacer hover */
+.plan:hover .front {
+    opacity: 0; /* Hace el frente transparente */
+}
+
+/* Muestra la parte trasera de la tarjeta al hacer hover */
+.plan:hover .back {
+    opacity: 1; /* Hace visible la parte trasera */
+}
+
+/* Estilo para el título dentro de la tarjeta */
+.plan h3 {
+    font-size: 2.5em; /* Tamaño grande para el texto */
+    color: #fff; /* Texto blanco */
+    margin: 20px 0; /* Margen superior e inferior */
+    text-shadow: 0 0 10px rgba(16, 148, 4, 0.7), 0 0 20px rgb(5, 245, 17); /* Sombra con un tono de verde */
+    animation: floatingText 4s ease-in-out infinite; /* Animación para que el texto flote */
+}
+
+/* Estilo del precio dentro de la tarjeta */
+.plan .price {
+    font-size: 1.5em; /* Tamaño del texto del precio */
+    color: #a2db1e; /* Color del precio */
+    margin: 10px 0; /* Margen superior e inferior */
+}
+
+/* Lista de características dentro de la tarjeta */
+.plan ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 10px 0; /* Margen superior e inferior */
+}
+
+/* Estilo para los elementos de la lista dentro de la tarjeta */
+.plan ul li {
+    margin: 10px 0; /* Margen entre los elementos de la lista */
+}
+
+/* Estilo de los botones */
+.btn {
+    display: inline-block; /* Hace que el botón se comporte como un elemento en línea */
+    padding: 10px 20px; /* Relleno dentro del botón */
+    background-color: #a2db1e; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease; /* Efecto de transición para el cambio de color */
+}
+
+/* Efecto hover para el botón */
+.btn:hover {
+    background-color: #8db71c; /* Cambia el color de fondo al pasar el cursor */
+}
+
+/* Footer */
+/* Estilo del pie de página */
+.footer {
+    text-align: center; /* Centra el contenido del pie de página */
+    padding: 20px; /* Espaciado interno */
+    background: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+}
+
+/* Enlaces de redes sociales en el pie de página */
+.footer .social-links a {
+    color: #fff; /* Color de los enlaces */
+    text-decoration: none; /* Elimina el subrayado */
+    margin: 0 10px; /* Espaciado horizontal entre enlaces */
+}
+
+/* Efecto hover para los enlaces de redes sociales */
+.footer .social-links a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+}
